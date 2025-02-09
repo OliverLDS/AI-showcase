@@ -67,19 +67,8 @@ If you’d like to contribute, feel free to fork the repo and submit a pull requ
 ---
 
 ## 🔗 Stay Connected
-📌 GitHub: https://github.com/your-username
-📌 LinkedIn: your-profile
+📌 GitHub: https://github.com/OliverLDS
 
 🚀 Let's explore AI together! 🎯
 
----
-
-### **How to Add This to GitHub**
-1. Open **GitHub** and go to your `AI-showcase` repository.
-2. Click **"Add file" → "Create new file"**.
-3. Name it **`README.md`**.
-4. Copy **everything** above and paste it into the editor.
-5. Click **"Commit changes"** at the bottom.
-
-Now your repository will display a **beautifully formatted README** on GitHub! 🚀
 
