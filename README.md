@@ -17,13 +17,22 @@ Each project is self-contained and designed to be **easy to understand**, making
 
 ## 📂 Repository Structure
 
-### 🔹 `tesla_10k_chatbot/`
+### 🔹 `tesla_10k_chatbot`
 **📄 `tesla_10k_chatbot.py`** – A chatbot that answers questions based on Tesla's 10-K financial report using:
 - PDF text extraction (`pdfplumber`)
 - Sentence embedding (`sentence_transformers`)
 - Similarity search (`FAISS`)
 - Response generation (`Google Gemini API`)
 - Interactive UI (`Gradio`)
+
+### 🔹 `fred_data_tweet_generator`
+**📄 fred_data_tweet_generator.py** – A code that:
+
+- Imports FRED series metadata (FRED ID, update frequency, importance) from a Google Sheet using `gspread`.
+- Fetches recent data from the FRED API via `fredapi`.
+- Filters out series without any fresh (past 3 days) data.
+- Applies weighted random selection based on user-defined frequency and importance.
+- Prepares multiple prompt templates (for example, Twitter-style commentary) and randomly selects one to display, including recent and historical data.
 
 *(More projects will be added over time!)*
 
@@ -43,7 +52,12 @@ Each project is self-contained and designed to be **easy to understand**, making
 
 3. **Run the chatbot example**:
   ```bash
-  python tesla_10k_chatbot/tesla_10k_chatbot.py
+  python tesla_10k_chatbot.py
+  ```
+
+4. **Run the tweeter generator example**:
+  ```bash
+  python fred_data_tweet_generator.py
   ```
 
 ---
