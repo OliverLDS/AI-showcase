@@ -3,3 +3,5 @@ sentence-transformers
 pdfplumber
 google-generativeai
 gradio
+gspread
+fredapi
