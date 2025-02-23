@@ -1,0 +1,67 @@
+```{r setup, include=FALSE}
+library(ggplot2)
+library(OliverPersonalPackage)
+
+knitr::opts_chunk$set(
+  echo = F,
+  warning = F,
+  message = F,
+  dpi = 300,
+  fig.align = "left"
+)
+
+WORKING_DIR <- "[YOUR WD]"
+narrative_data <- readRDS(paste0(WORKING_DIR, "narrative_data.rds"))
+SURPRISE_NAME <- narrative_data$surprise_name
+CORR_NAME <- narrative_data$corr_name
+TITLE <- narrative_data$title
+PARAGRAPH_1 <- narrative_data$paragraph1
+PARAGRAPH_2 <- narrative_data$paragraph2
+PARAGRAPH_3 <- narrative_data$paragraph3
+plot_data <- readRDS(paste0(WORKING_DIR, "plot_data.rds"))
+SURPRISE_DATA <- plot_data$surprise
+CORR_DATA <- plot_data$corr
+```
+
+---
+title: "`r TITLE`"
+format: 
+  docx:
+    reference-doc: [YOUR REFERENCE WORD DOC PATH]
+---
+
+```{r paragraph_1, results='asis'}
+cat(PARAGRAPH_1)
+```
+
+```{r paragraph_2, results='asis'}
+cat(PARAGRAPH_2)
+```
+
+:::{custom-style='Subtitle'}
+```{r Plot_1}
+p1 <- ggplot() +
+  geom_line(data = SURPRISE_DATA, aes(x = date, y = value), color = Red_Palette[2, 1]) +
+  labs(x = "", y = "", title = SURPRISE_NAME) +
+  theme_minimal(base_size = 9) +
+  theme(plot.title = element_text(face = "bold", size = 6), plot.caption = element_text(size = 5))
+
+p2 <- ggplot() +
+  geom_line(data = CORR_DATA, aes(x = date, y = value), color = Green_Palette[2, 1]) +
+  labs(x = "", y = "", title = CORR_NAME, caption = "Source: Federal Reserve Economic Data") +
+  theme_minimal(base_size = 9) +
+  theme(plot.title = element_text(face = "bold", size = 6), plot.caption = element_text(size = 5))
+
+p_combined <- ggplot() +
+  coord_equal(xlim = c(1, 28), ylim = c(1, 16), expand = FALSE) +
+  annotation_custom(ggplotGrob(p1), xmin = 0.5, xmax = 27.5, ymin = 9, ymax = 18) +
+  annotation_custom(ggplotGrob(p2), xmin = 0.5, xmax = 27.5, ymin = -2, ymax = 8) +
+  theme(panel.background = element_rect(fill = "transparent", color = NA))
+
+p_combined
+```
+:::
+
+```{r paragraph_3, results='asis'}
+cat(PARAGRAPH_3)
+```
