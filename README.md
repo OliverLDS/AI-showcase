@@ -34,6 +34,17 @@ Each project is self-contained and designed to be **easy to understand**, making
 - Applies weighted random selection based on user-defined frequency and importance.
 - Prepares multiple prompt templates (for example, Twitter-style commentary) and randomly selects one to display, including recent and historical data.
 
+### 🔹 FRED_Surprise_Reporter
+**📄 FRED_Surprise_Reporter.R** – An R script that:
+
+- Loads time-series data from FRED (Federal Reserve Economic Data).
+- Identifies unexpected trends in economic indicators using statistical models.
+- Uses an AR(1) mean-reverting model to detect significant deviations.
+- Leverages the Google Gemini API to generate insights and explanations.
+- Finds correlated variables to explain anomalies.
+- Generates an AI-written narrative summarizing economic shifts.
+- Saves structured results and renders a Quarto report.
+
 *(More projects will be added over time!)*
 
 ---
@@ -58,6 +69,12 @@ Each project is self-contained and designed to be **easy to understand**, making
 4. **Run the tweeter generator example**:
   ```bash
   python fred_data_tweet_generator.py
+  ```
+
+5. **Run the fred surprise reporter example**:
+  ```bash
+  install.packages(c("tidyverse", "httr2", "quarto", "readxl"))
+  source("FRED_Surprise_Reporter.R")
   ```
 
 ---
