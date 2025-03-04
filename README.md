@@ -45,6 +45,21 @@ Each project is self-contained and designed to be **easy to understand**, making
 - Generates an AI-written narrative summarizing economic shifts.
 - Saves structured results and renders a Quarto report.
 
+### 🔹 Oliver_Wealth_Chatbot
+**📄 wealthmanager.R** – An R Shiny application that acts as a wealth management planning chatbot named Oliver. It:
+
+- Loads multi-language configurations (English and Chinese) along with UI labels and prompts.
+- Communicates with the Google Gemini API to generate dialogue responses.
+- Processes chat history to update client data and extract key information.
+- Implements a dynamic, priority-based prompt system that computes scores for:
+   + Trust-building (if client trust is low),
+   + Information collection (if key client data is missing),
+   + Raising client worries (enhanced if client worries/interests are provided),
+   + Introducing products (once sufficient trust is built and worries raised),
+   + High-end service pitching (as conversation rounds progress).
+- Adjusts prompt priorities based on the conversation round to escalate dialogue over time.
+- Renders an interactive chat interface using Shiny, with real-time updates to the conversation flow.
+
 *(More projects will be added over time!)*
 
 ---
@@ -75,6 +90,12 @@ Each project is self-contained and designed to be **easy to understand**, making
   ```bash
   install.packages(c("tidyverse", "httr2", "quarto", "readxl"))
   source("FRED_Surprise_Reporter.R")
+  ```
+
+6. **Run the Oliver Wealth Chatbot example**:
+  ```bash
+  install.packages(c("shiny", "httr2", "markdown", "jsonlite"))
+  R -e "shiny::runApp('wealthmanager.R')"
   ```
 
 ---
